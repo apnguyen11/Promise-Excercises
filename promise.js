@@ -8,19 +8,25 @@ var urls = [
 
 
   function buildPromise(result){
-      console.log(result)
+    
     var aPromise = $.get(result)
-      .then(console.log("data fetched"))
     return aPromise
   }
 
 
 const promises = urls.map(buildPromise)
 
-$(function (){
-    return promises
-})
-  
+promises[0]
+  .then(promises[1])
+  .then(function(){
+      console.log("2 promises")
+  })
+
+Promise.all(promises)
+  .then(function(promise){
+        console.log("they have all resolved")
+        console.log(promise)
+  })
 
 
 
