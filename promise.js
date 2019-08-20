@@ -46,10 +46,10 @@ Promise.all(promises)
       console.log(error)  
   })
 
-  let dropButteredPromisified = () => {
+  dropButteredPromisified = () => {
     let drop = Math.random();
     console.log(drop)
-    new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
     if (drop < 0.5) {
        resolve(console.log("Landed butter-side up!"));
     } else if (drop > 0.5) {
@@ -60,11 +60,11 @@ Promise.all(promises)
   })
  }
 
- dropButteredPromisified() //.then(()=>{
-//     alert('Whew, that was close!');
-//  }).catch(()=>{
-//     alert('Well shucks, there goes my toast...');
-//  });
+ dropButteredPromisified().then(()=>{
+    alert('Whew, that was close!');
+ }).catch(()=>{
+    alert('Well shucks, there goes my toast...');
+ });
 
     // return Promise(
         //     function(x, y){
